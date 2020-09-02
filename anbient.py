@@ -31,7 +31,8 @@ def anbient(name,diretorio,episodios):
 	nav_options = Options()
 	nav_options.add_argument("--headless")
 	nav_options.add_argument("--log-level=3")
-	chrome = webdriver.Chrome(chrome_options=nav_options)
+	nav_options.binary_location = "C:/Program Files/Google/Chrome/Application/chrome.exe"
+	chrome = webdriver.Chrome(options=nav_options)
 	
 	rPage = chrome.get(link)
 	links = chrome.execute_script("return document.getElementsByClassName('servidor zippyshare')[0].getElementsByTagName('li')")

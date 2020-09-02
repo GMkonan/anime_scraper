@@ -1,18 +1,14 @@
-#escolher site que vai dar scrape e analisar
-#ler sobre o selenium e utilizalo
-#ler sobre a GUI q vai usar (acho q vou usar a dearPyGUI)
-#links e outras coisas uteis no notion
 import os
-import sys
-import requests
-from bs4 import BeautifulSoup as bs
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options 
 import time
-from colorama import Fore, Style
-from clint.textui import progress
 from anbient import anbient
 from goyabu import goyabu
+from colorama import Fore, Style
+from tkinter.filedialog import askopenfilename
+from tkinter import filedialog
+from tkinter import *
+
+root = Tk()
+root.withdraw()
 
 os.system('color')
 
@@ -26,12 +22,7 @@ while True:
     else:
         break
 
-directory = input(f"{Fore.CYAN}{Style.BRIGHT}Onde vc quer salvar os episodios: {Style.RESET_ALL}").replace("\\", "/")
-while True: 
-    if directory == "":
-        directory = input(f"{Fore.CYAN}{Style.BRIGHT}Onde vc quer salvar os episodios: {Style.RESET_ALL}").replace("\\", "/")
-    else:
-        break
+directory = filedialog.askdirectory()
 
 episodios = input(f'{Fore.CYAN}{Style.BRIGHT}Se quiser baixar todos os episodios aperte "t"\nCaso queira um especifico aperte "e"\n{Style.RESET_ALL}')
 while True:
@@ -40,6 +31,7 @@ while True:
         episodios = input(f'{Fore.CYAN}{Style.BRIGHT}Se quiser baixar todos os episodios aperte "t"\nCaso queira um especifico aperte "e"\n{Style.RESET_ALL}')
     else:
         break
+
 
 if site == "g":
     goyabu(name,directory,episodios)
