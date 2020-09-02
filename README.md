@@ -4,8 +4,8 @@
 
 ### Exemplo de print:
 
-![Example Images Inicio](https://github.com/GMkonan/anime_scraper/example_images/inicio.png)
+![Example Images Inicio](https://github.com/GMkonan/anime_scraper/blob/master/example_images/inicio.png)
 
-![Example Images Inicio](https://github.com/GMkonan/anime_scraper/example_images/procurasave.png)
+![Example Images Procurasave](https://github.com/GMkonan/anime_scraper/blob/master/example_images/procurasave.png)
 
-![Example Images Inicio](https://github.com/GMkonan/anime_scraper/example_images/download.png)
+![Example Images Download](https://github.com/GMkonan/anime_scraper/blob/master/example_images/download.png)
