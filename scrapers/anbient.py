@@ -7,7 +7,6 @@ import time
 import os 
 from colorama import Fore, Style
 
-
 def anbient(name,diretorio,episodios):
 	os.system('color')
 
