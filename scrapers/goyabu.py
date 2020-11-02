@@ -7,6 +7,7 @@ from selenium.webdriver.chrome.options import Options
 import time
 from colorama import Fore, Style
 from clint.textui import progress
+from PyInquirer import prompt
 
 def goyabu(name,directory,episodios): 
     r = requests.get(f"https://goyabu.com/?s={name}")
@@ -17,7 +18,7 @@ def goyabu(name,directory,episodios):
 
     link = f"https://goyabu.com/assistir/{name.replace(' ', '-').lower()}/"
 
-    animes = {}
+    animeSearchList = {}
 
     for h4s in videos_in_menu:
         if len(h4s) <= 1:
@@ -26,14 +27,18 @@ def goyabu(name,directory,episodios):
         titles = h4s.find_all("h4",attrs={'class': 'video-title'})
         for title in titles:
             for t in title.find_all("a"):
-                animes[t['title']] = t['href']
-                print(t['title'])
-
-    option = input(f"{Fore.CYAN}{Style.BRIGHT}Esses foram os resultados, bote o numero que corresponde ao anime que vc quer:{Style.RESET_ALL}")
-    for i,key in enumerate(animes):
-        if int(option) - 1 == i:
-            titulo = key
-            link = animes[key]
+                animeSearchList[t['title']] = t['href']
+        questions = [
+        {
+        'type': 'list',
+        'name': 'Anime_name',
+        'message': "Esses foram os resultados, escolha qual baixar: ",
+        'choices':[i for i in animeSearchList]
+        }
+        ]
+        resposta = prompt(questions)
+        link = animeSearchList[resposta['Anime_name']]
+        titulo = resposta['Anime_name']
 
     #create chrome instance for later
     nav_options = Options()
@@ -47,14 +52,15 @@ def goyabu(name,directory,episodios):
 
     videos_div = soup.find_all('div',attrs={'class': 'loop-content phpvibe-video-list miau'})
     episodio = ""
-    while True:
-        if episodio != "":
-            break
-        else:
-            for lista_de_eps in videos_div:
-                for eps in lista_de_eps.find_all("a",attrs={'class': 'clip-link'}):
-                    print(f"{eps['title']}\n")
-            episodio = input(f"{Fore.CYAN}{Style.BRIGHT}Bote o numero do episodio que deseja baixar: {Style.RESET_ALL}")
+    if episodios == "e":
+        while True:
+            if episodio != "":
+                break
+            else:
+                for lista_de_eps in videos_div:
+                    for eps in lista_de_eps.find_all("a",attrs={'class': 'clip-link'}):
+                        print(f"{eps['title']}\n")
+                episodio = input(f"{Fore.CYAN}{Style.BRIGHT}Bote o numero do episodio que deseja baixar: {Style.RESET_ALL}")
 
     for videos in videos_div:
         for i,video in enumerate(videos.find_all('a',attrs={'class':'clip-link'})):
