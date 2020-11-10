@@ -1,0 +1,8 @@
+requests
+pyfiglet
+bs4
+selenium
+clint
+colorama
+PyInquirer
+pathlib2

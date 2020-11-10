@@ -10,6 +10,10 @@ Exemplo: 'Fate/Stay Night' pode ser encontrado passando apenas a palavra 'fate'.
 Se quiser passar mais de uma palavra apenas passe com hífens como por Exemplo:
 Para encontrar 'sword art online' digite 'sword-art-online'.
 
+### Instalação
+to Install the script just clone the repository with `git clone https://github.com/GMkonan/anime_scraper.git`
+and install the dependencies in requirements with `pip install -r requirements.txt`
+
 ## Exemplos:
 
 ### Argumentos
