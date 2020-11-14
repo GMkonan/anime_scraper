@@ -35,3 +35,6 @@ Especifica o diretorio onde você quer salvar os eps.
 ```python anime.py -d E:/animes/Nisemonogatari nisemonogatari```
 Caso não seja especificado o script ira criar uma caminho 'animes/{nome_anime}'
 dentro do diretorio onde o script esta.
+
+### LICENSE
+[MIT](https://github.com/GMkonan/anime_scraper/blob/master/LICENSE)
